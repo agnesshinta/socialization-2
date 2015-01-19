@@ -12,7 +12,7 @@ module Socialization
     extend ActiveSupport::Concern
 
     included do
-      after_destroy { Socialization.been_model.remove_beenrs(self) }
+      after_destroy { Socialization.been_model.remove_beeners(self) }
 
       # Specifies if self can be beened.
       #
@@ -26,7 +26,7 @@ module Socialization
       #
       # @return [Boolean]
       def beened_by?(beener)
-        raise Socialization::ArgumentError, "#{beener} is not beener!"  unless beener.respond_to?(:is_beener?) && beenr.is_beenr?
+        raise Socialization::ArgumentError, "#{beener} is not beener!"  unless beener.respond_to?(:is_beener?) && beener.is_beener?
         Socialization.been_model.beens?(beener, self)
       end
 
